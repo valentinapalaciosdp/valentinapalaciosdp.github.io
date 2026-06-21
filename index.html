@@ -204,7 +204,37 @@ iframe, embed, object { max-width: 100% !important; }
 @media (max-width: 767px) {
 	.e-con-inner:has(.wpr-flip-box) { grid-template-columns: repeat(2, minmax(0, 150px)) !important; }
 }
-</style>
+
+/* === Ajustes escritorio: menu, lata del hero y transicion entre secciones === */
+/* 1) Lineas del menu (Royal Addons pointer) -> amarillo de marca, no azul */
+.wpr-nav-menu .wpr-pointer-item::before,
+.wpr-nav-menu .wpr-pointer-item::after,
+.wpr-nav-menu .wpr-pointer-item:hover::before,
+.wpr-nav-menu .wpr-pointer-item:hover::after,
+.wpr-nav-menu .wpr-menu-item::before,
+.wpr-nav-menu .wpr-menu-item::after { background-color: rgb(232,255,0) !important; border-color: rgb(232,255,0) !important; }
+
+@media (min-width: 1025px) {
+	/* 2) Lata del hero reposicionada para que se vea completa (mas a la izquierda) */
+	.elementor-element-2e6c8f15 { background-position: right center !important; }
+}
+
+/* 3) Transicion suave (fundido + leve blur) en los bordes de las secciones con imagen */
+.elementor-element-2e6c8f15, .elementor-element-52b8b81b { position: relative; }
+.elementor-element-2e6c8f15::before, .elementor-element-2e6c8f15::after,
+.elementor-element-52b8b81b::before, .elementor-element-52b8b81b::after {
+	content: ""; position: absolute; left: 0; right: 0; height: 70px; pointer-events: none; z-index: 2;
+	-webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.elementor-element-2e6c8f15::before, .elementor-element-52b8b81b::before {
+	top: 0; background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.85));
+	-webkit-mask-image: linear-gradient(to top, transparent, #000); mask-image: linear-gradient(to top, transparent, #000);
+}
+.elementor-element-2e6c8f15::after, .elementor-element-52b8b81b::after {
+	bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.85));
+	-webkit-mask-image: linear-gradient(to bottom, transparent, #000); mask-image: linear-gradient(to bottom, transparent, #000);
+}
+		</style>
 </head>
 <body class="home wp-singular page-template page-template-elementor_canvas page page-id-86 wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-86">
 			<div data-elementor-type="wp-page" data-elementor-id="86" class="elementor elementor-86">
